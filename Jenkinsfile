@@ -7,23 +7,22 @@ pipeline {
     }
 
     stages {
-        steps {
-            stage('Build'){
-                echo 'Building code'
-                sh './gradlew build'
+        stage('Build'){
+            echo 'Building code'
+            sh './gradlew build'
+        }
+        stage('Test') {
+            steps {
+                echo 'Running JUnit tests'
+                sh './gradlew test'
             }
-            stage('Test') {
-                steps {
-                    echo 'Running JUnit tests'
-                    sh './gradlew test'
-                }
-                post {
-                    always {
-                        junit 'build/test-results/test/**/*.xml'
-                    }
+            post {
+                always {
+                    junit 'build/test-results/test/**/*.xml'
                 }
             }
         }
+    }
 
     }
 }

@@ -23,6 +23,11 @@ test {
     useJUnit()
     outputs.upToDateWhen {false}
     testLogging {
-
+        showStandardStreams = true
+        reports {
+            junitXml.setEnabled(true)
+            junitXml.outputPerTestCase(true)
+            junitXml.destination(file('build/test-results/test'))
+        }
     }
 }
