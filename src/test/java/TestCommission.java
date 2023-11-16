@@ -38,7 +38,7 @@ public class TestCommission {
         when(l.getCount()).thenReturn(5);
         when(stock.getCount()).thenReturn(5);
         when(barrel.getCount()).thenReturn(5);
-        double com = c.getCommission(lock, stock, barrel);
+        double com = c.getCommission(l, stock, barrel);
         Assert.assertEquals(520.0, com, 0);
     }
 }
